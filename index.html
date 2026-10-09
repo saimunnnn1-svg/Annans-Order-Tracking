@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anonna Mart | Checkout & Real-Time Order Tracking</title>
+  <meta name="description" content="Anonna Mart - Your Choice, Our Care. Seamless high-converting checkout flow and live parcel tracking with Bangladesh delivery, COD, and mobile wallet integrations.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/tracking.css">
+  <link rel="stylesheet" href="css/modal.css">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-notice-bar">
+    <div class="container top-notice-content">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="notice-badge">⚡ EID OFFER</span>
+        <span>Get free delivery on orders over ৳800! Use coupon <strong>FREESHIP</strong></span>
+      </div>
+      <div class="notice-contact">
+        <a href="tel:+8809610123456" class="notice-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Helpline: +880 9610 123456
+        </a>
+        <a href="https://wa.me/8801712345678" target="_blank" class="notice-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          WhatsApp Support
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a class="brand-logo" onclick="switchView('checkout')">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="brand-text-wrap">
+          <div class="brand-title">Anonna<span>Mart</span></div>
+          <div class="brand-tagline">Your Choice, Our Care</div>
+        </div>
+      </a>
+
+      <!-- Navigation Tabs -->
+      <nav class="main-nav">
+        <button class="nav-tab-btn active" data-view="checkout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span>Checkout Flow</span>
+        </button>
+
+        <button class="nav-tab-btn" data-view="tracking">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Track Order</span>
+          <span class="nav-tab-badge">Live GPS</span>
+        </button>
+
+        <button class="nav-tab-btn" data-view="success">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span>Order Confirmation</span>
+        </button>
+      </nav>
+
+      <!-- Trust Badge -->
+      <div class="header-actions">
+        <div class="security-badge-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>100% Authentic BD</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Interactive Demo Toolbar -->
+  <div class="demo-quick-bar">
+    <div class="container demo-bar-inner">
+      <div class="demo-title-group">
+        <span class="demo-pill">Interactive Demo</span>
+        <span>Quick Scenario Navigator:</span>
+      </div>
+      <div class="demo-controls-group">
+        <button class="demo-btn demo-view-btn active" data-view="checkout">
+          🛒 Checkout Page
+        </button>
+        <button class="demo-btn demo-view-btn" data-view="success">
+          🎉 Success Screen
+        </button>
+        <button class="demo-btn demo-view-btn" data-view="tracking">
+          📍 Tracking System
+        </button>
+        <span style="color: var(--border-medium); margin: 0 4px;">|</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Sample Orders:</span>
+        <button class="demo-btn" onclick="searchAndDisplayOrder('AM-98451'); switchView('tracking');">
+          🛵 Out for Delivery (#98451)
+        </button>
+        <button class="demo-btn" onclick="searchAndDisplayOrder('AM-84102'); switchView('tracking');">
+          🚚 In Transit (#84102)
+        </button>
+        <button class="demo-btn" onclick="searchAndDisplayOrder('AM-76290'); switchView('tracking');">
+          📦 Processing (#76290)
+        </button>
+        <button class="demo-btn" onclick="searchAndDisplayOrder('AM-43109'); switchView('tracking');">
+          ✓ Delivered (#43109)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main View Router Container -->
+  <main class="main-wrapper container">
+
+    <!-- ====================================================================
+         VIEW 1: SEAMLESS CHECKOUT PAGE & FLOW
+         ==================================================================== -->
+    <section id="view-checkout" class="view-section active">
+      <div class="checkout-header-area">
+        <div class="checkout-breadcrumb">
+          <span>Home</span>
+          <span>/</span>
+          <span>Organic Groceries</span>
+          <span>/</span>
+          <span class="breadcrumb-active">Secure Checkout</span>
+        </div>
+        <h1 class="checkout-title">Express Checkout</h1>
+        <p class="checkout-subtitle">Please enter your delivery details to complete your order with Anonna Mart.</p>
+      </div>
+
+      <!-- Two-Column Desktop View Grid -->
+      <div class="checkout-grid">
+        
+        <!-- Left Column: Customer Information & Delivery Details -->
+        <div class="checkout-form-column">
+
+          <!-- Step 1: Fast Account / Guest Mode -->
+          <div class="checkout-card">
+            <div class="card-header-with-step">
+              <div class="step-indicator-title">
+                <span class="step-number">1</span>
+                <span class="step-title-text">Contact & Account Preference</span>
+              </div>
+              <span id="otp-verify-tag">
+                <button type="button" class="otp-verify-inline" onclick="openOtpModal()">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  Verify via BD SMS OTP
+                </button>
+              </span>
+            </div>
+
+            <!-- Fast Guest / Member Selector -->
+            <div class="account-mode-toggle">
+              <button type="button" class="account-mode-btn active" id="btn-mode-guest">
+                ✓ Guest Checkout (Fast & Easy)
+              </button>
+              <button type="button" class="account-mode-btn" id="btn-mode-member">
+                Returning Member Login
+              </button>
+            </div>
+
+            <!-- Name and Phone Row -->
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="checkout-name">
+                  Full Name <span class="required">*</span>
+                </label>
+                <input type="text" id="checkout-name" class="form-input" placeholder="e.g., Tahmidur Rahman" value="Tahmidur Rahman" required>
+                <div class="form-error-msg"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="checkout-phone">
+                  Phone Number <span class="required">*</span>
+                </label>
+                <div class="input-with-prefix">
+                  <span class="input-prefix">🇧🇩 +880</span>
+                  <input type="tel" id="checkout-phone" class="form-input" placeholder="1712-345678" value="01712345678" required>
+                </div>
+                <div class="form-error-msg"></div>
+              </div>
+            </div>
+
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="checkout-alt-phone">
+                  Alternative Phone <span class="optional-tag">(Optional for Courier Rider)</span>
+                </label>
+                <input type="tel" id="checkout-alt-phone" class="form-input" placeholder="e.g., 01819-223344">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="checkout-email">
+                  Email Address <span class="optional-tag">(For Digital Invoice)</span>
+                </label>
+                <input type="email" id="checkout-email" class="form-input" placeholder="tahmid.rahman@gmail.com" value="tahmid.rahman@gmail.com">
+              </div>
+            </div>
+
+            <label class="checkbox-label">
+              <input type="checkbox" id="save-info-checkbox" checked>
+              <span>Save my information for 1-click seamless checkout next time</span>
+            </label>
+          </div>
+
+          <!-- Step 2: Shipping & Delivery Address -->
+          <div class="checkout-card">
+            <div class="card-header-with-step">
+              <div class="step-indicator-title">
+                <span class="step-number">2</span>
+                <span class="step-title-text">Delivery Address (Bangladesh)</span>
+              </div>
+              <span class="badge badge-success">Doorstep Delivery</span>
+            </div>
+
+            <!-- District & Upazila Selectors -->
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="checkout-district">
+                  District / City <span class="required">*</span>
+                </label>
+                <select id="checkout-district" class="form-select" required>
+                  <!-- Populated by JS -->
+                </select>
+                <div class="form-error-msg"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="checkout-upazila">
+                  Upazila / Area <span class="required">*</span>
+                </label>
+                <select id="checkout-upazila" class="form-select" required>
+                  <!-- Populated dynamically based on district -->
+                </select>
+                <div class="form-error-msg"></div>
+              </div>
+            </div>
+
+            <!-- Detailed House / Road Details -->
+            <div class="form-group">
+              <label class="form-label" for="checkout-address">
+                Full Street Address / House & Road <span class="required">*</span>
+              </label>
+              <textarea id="checkout-address" class="form-textarea" rows="2" placeholder="House #42, Road #11, Sector #4, Near Uttara Friends Club" required>House 42, Road 11, Sector 4</textarea>
+              <div class="form-error-msg"></div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="checkout-notes">
+                Special Delivery Instructions <span class="optional-tag">(Optional Note to Rider)</span>
+              </label>
+              <input type="text" id="checkout-notes" class="form-input" placeholder="e.g., Call before arrival, leave at reception / 3rd floor">
+            </div>
+          </div>
+
+          <!-- Step 3: Shipping Method Selector -->
+          <div class="checkout-card">
+            <div class="card-header-with-step">
+              <div class="step-indicator-title">
+                <span class="step-number">3</span>
+                <span class="step-title-text">Shipping Method</span>
+              </div>
+              <span class="badge badge-primary">Auto-Updated by District</span>
+            </div>
+
+            <div class="shipping-options-group">
+              <!-- Inside Dhaka -->
+              <div class="shipping-method-card selected" id="ship-method-inside" data-method="inside_dhaka">
+                <div class="shipping-card-left">
+                  <div class="custom-radio-circle"></div>
+                  <div class="shipping-details-wrap">
+                    <div class="shipping-title">
+                      Inside Dhaka Metro
+                      <span class="shipping-est-badge">1-2 Days</span>
+                    </div>
+                    <div class="shipping-desc">Doorstep delivery via Pathao / Steadfast Courier inside Dhaka city</div>
+                  </div>
+                </div>
+                <div class="shipping-price-wrap">৳60</div>
+              </div>
+
+              <!-- Outside Dhaka -->
+              <div class="shipping-method-card disabled" id="ship-method-outside" data-method="outside_dhaka">
+                <div class="shipping-card-left">
+                  <div class="custom-radio-circle"></div>
+                  <div class="shipping-details-wrap">
+                    <div class="shipping-title">
+                      Outside Dhaka (All Bangladesh)
+                      <span class="shipping-est-badge">3-5 Days</span>
+                    </div>
+                    <div class="shipping-desc">Nationwide delivery covering all 64 districts & remote upazilas</div>
+                  </div>
+                </div>
+                <div class="shipping-price-wrap">৳120</div>
+              </div>
+
+              <!-- Dhaka Express Add-on -->
+              <div class="shipping-method-card" id="ship-method-express" data-method="express_dhaka">
+                <div class="shipping-card-left">
+                  <div class="custom-radio-circle"></div>
+                  <div class="shipping-details-wrap">
+                    <div class="shipping-title">
+                      Express Same-Day Delivery
+                      <span class="shipping-est-badge" style="background: var(--color-accent-100); color: #78530B;">Today (Within 6 hrs)</span>
+                    </div>
+                    <div class="shipping-desc">Priority rush dispatch via dedicated motorcycle rider</div>
+                  </div>
+                </div>
+                <div class="shipping-price-wrap">৳150</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Payment Method Options -->
+          <div class="checkout-card">
+            <div class="card-header-with-step">
+              <div class="step-indicator-title">
+                <span class="step-number">4</span>
+                <span class="step-title-text">Payment Method</span>
+              </div>
+              <span class="badge badge-gold">100% Safe & Verified</span>
+            </div>
+
+            <div class="payment-methods-stack">
+              <!-- Option 1: Cash on Delivery (COD) [Default] -->
+              <div class="payment-card selected" data-payment="cod">
+                <div class="payment-card-header">
+                  <div class="payment-card-left">
+                    <div class="custom-radio-circle"></div>
+                    <div class="payment-title-group">
+                      <div class="payment-name">
+                        Cash on Delivery (COD)
+                        <span class="badge badge-success" style="font-size: 0.7rem;">Default</span>
+                      </div>
+                      <div class="payment-caption">Pay with cash when package arrives at your doorstep</div>
+                    </div>
+                  </div>
+                  <div class="payment-logos">
+                    <span class="pay-badge">💵 CASH</span>
+                  </div>
+                </div>
+                <!-- COD Details -->
+                <div class="payment-subpanel">
+                  <div style="font-size: 0.85rem; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span><strong>Risk Free:</strong> Inspect your parcel before paying the courier rider. Exact change is appreciated!</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Option 2: Mobile Banking (bKash / Nagad / Rocket) -->
+              <div class="payment-card" data-payment="bkash">
+                <div class="payment-card-header">
+                  <div class="payment-card-left">
+                    <div class="custom-radio-circle"></div>
+                    <div class="payment-title-group">
+                      <div class="payment-name">Mobile Banking / Digital Wallet</div>
+                      <div class="payment-caption">Instant digital checkout via bKash, Nagad, or Rocket</div>
+                    </div>
+                  </div>
+                  <div class="payment-logos">
+                    <span class="provider-logo-pill logo-bkash">bKash</span>
+                    <span class="provider-logo-pill logo-nagad">Nagad</span>
+                    <span class="provider-logo-pill logo-rocket">Rocket</span>
+                  </div>
+                </div>
+                <!-- Mobile Banking Details -->
+                <div class="payment-subpanel">
+                  <div class="mfs-badge-row">
+                    <button type="button" class="mfs-tab active mfs-bkash">bKash</button>
+                    <button type="button" class="mfs-tab mfs-nagad">Nagad</button>
+                    <button type="button" class="mfs-tab mfs-rocket">Rocket</button>
+                  </div>
+                  <div class="mfs-instructions">
+                    <strong>Merchant Payment Simulation:</strong>
+                    <ol>
+                      <li>You will be redirected to the secure bKash PGW gateway.</li>
+                      <li>Merchant Number: <strong>01711-223344</strong> (Anonna Mart Ltd).</li>
+                      <li>Zero transaction charges applied. Instant verification.</li>
+                    </ol>
+                  </div>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="openBkashModal()" style="width: 100%; font-weight: 700;">
+                    ⚡ Test bKash Checkout Simulator
+                  </button>
+                </div>
+              </div>
+
+              <!-- Option 3: Credit / Debit Card -->
+              <div class="payment-card" data-payment="card">
+                <div class="payment-card-header">
+                  <div class="payment-card-left">
+                    <div class="custom-radio-circle"></div>
+                    <div class="payment-title-group">
+                      <div class="payment-name">Credit or Debit Card</div>
+                      <div class="payment-caption">Visa, Mastercard, UnionPay via SSLCommerz 256-bit SSL</div>
+                    </div>
+                  </div>
+                  <div class="payment-logos">
+                    <span class="pay-badge">VISA</span>
+                    <span class="pay-badge">Mastercard</span>
+                  </div>
+                </div>
+                <!-- Card Inputs Subpanel -->
+                <div class="payment-subpanel">
+                  <div class="form-group">
+                    <label class="form-label" style="font-size: 0.8rem;">Cardholder Name</label>
+                    <input type="text" class="form-input" placeholder="Tahmidur Rahman" value="Tahmidur Rahman">
+                  </div>
+                  <div class="card-input-grid">
+                    <div class="form-group">
+                      <label class="form-label" style="font-size: 0.8rem;">Card Number</label>
+                      <input type="text" class="form-input" placeholder="4123 4567 8901 2345" value="4123 4567 8901 2345">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" style="font-size: 0.8rem;">MM/YY</label>
+                      <input type="text" class="form-input" placeholder="12/28" value="12/28">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" style="font-size: 0.8rem;">CVC</label>
+                      <input type="password" class="form-input" placeholder="123" value="123">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sticky Dynamic Order Summary Box -->
+        <div class="summary-sidebar-wrap">
+          <div class="order-summary-box">
+            <div class="summary-header">
+              <div class="summary-title">
+                <span>Order Summary</span>
+              </div>
+              <span class="summary-item-badge" id="summary-item-count">3 items</span>
+            </div>
+
+            <!-- Itemized Product List -->
+            <div class="cart-items-list" id="checkout-cart-items">
+              <!-- Rendered dynamically by checkout.js -->
+            </div>
+
+            <!-- Promotional Coupon Code Module -->
+            <div class="coupon-module">
+              <div class="coupon-input-group">
+                <input type="text" id="coupon-code-input" class="form-input coupon-input" placeholder="Promo / Coupon Code">
+                <button type="button" class="btn btn-outline coupon-btn" id="apply-coupon-btn">Apply</button>
+              </div>
+
+              <!-- Available clickable coupon chips for quick test -->
+              <div class="coupon-chips-row">
+                <span class="coupon-chip" onclick="applyCouponCode('ANONNA10')">🏷️ ANONNA10 (10% OFF)</span>
+                <span class="coupon-chip" onclick="applyCouponCode('EID2026')">✨ EID2026 (৳200 OFF)</span>
+                <span class="coupon-chip" onclick="applyCouponCode('FREESHIP')">🚚 FREESHIP</span>
+              </div>
+
+              <!-- Active Applied Coupon Banner -->
+              <div class="applied-coupon-banner" id="applied-coupon-banner">
+                <div class="applied-coupon-info">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span id="applied-coupon-text">ANONNA10 applied</span>
+                </div>
+                <button type="button" class="remove-coupon-btn" onclick="removeAppliedCoupon()">Remove</button>
+              </div>
+            </div>
+
+            <!-- Pricing Breakdown -->
+            <div class="pricing-breakdown">
+              <div class="breakdown-row">
+                <span>Subtotal</span>
+                <span id="summary-subtotal">৳1,350</span>
+              </div>
+              <div class="breakdown-row discount-row" id="summary-discount-row" style="display: none;">
+                <span>Applied Discount</span>
+                <span id="summary-discount">-৳0</span>
+              </div>
+              <div class="breakdown-row">
+                <span>Estimated Delivery Charge</span>
+                <span id="summary-shipping">৳60</span>
+              </div>
+              <div class="breakdown-total-row">
+                <div class="total-label-wrap">
+                  <span class="total-title">Total Payable</span>
+                  <span class="total-vat-hint">Including all taxes & VAT</span>
+                </div>
+                <div class="total-amount-display">
+                  <span class="total-currency-sign">৳</span>
+                  <span id="summary-total">1,410</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Trust Badges -->
+            <div class="security-trust-card" style="margin-bottom: 20px;">
+              <div class="trust-badge-mini">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>100% Authentic</span>
+              </div>
+              <div class="trust-badge-mini">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                <span>COD Available</span>
+              </div>
+              <div class="trust-badge-mini">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span>SSL Encrypted</span>
+              </div>
+              <div class="trust-badge-mini">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                <span>7 Days Return</span>
+              </div>
+            </div>
+
+            <!-- Primary Action Button: Place Order Now -->
+            <button type="button" class="btn btn-primary place-order-cta-btn" id="place-order-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span id="place-order-btn-text">Place Order Now • ৳1,410</span>
+            </button>
+            <div style="font-size: 0.75rem; text-align: center; color: var(--text-subtle); margin-top: 10px;">
+              By placing this order, you agree to Anonna Mart's Terms & Conditions.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 2: ORDER SUCCESS / CONFIRMATION PAGE
+         ==================================================================== -->
+    <section id="view-success" class="view-section">
+      <div class="order-success-container">
+        <div class="success-hero-card">
+          <div class="success-animation-circle">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+
+          <h1 class="success-heading">Order Placed Successfully!</h1>
+          <p class="success-lead">
+            Thank you, <strong id="success-customer-name">Tahmidur Rahman</strong>! We have received your order and sent a confirmation SMS to your mobile.
+          </p>
+
+          <!-- Order ID Highlight with Copy Button -->
+          <div class="order-id-badge-box">
+            <span class="order-id-label">Tracking Order ID:</span>
+            <span class="order-id-highlight" id="success-order-id">#AM-98451</span>
+            <button type="button" class="copy-order-btn" onclick="copyOrderId(document.getElementById('success-order-id').innerText)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copy
+            </button>
+          </div>
+
+          <!-- Summary Info Grid -->
+          <div class="success-info-grid">
+            <div class="info-item">
+              <span class="info-item-label">Contact Phone</span>
+              <span class="info-item-val" id="success-phone">01712-345678</span>
+            </div>
+            <div class="info-item">
+              <span class="info-item-label">Delivery Destination</span>
+              <span class="info-item-val" id="success-address">House 42, Road 11, Sector 4, Uttara, Dhaka</span>
+            </div>
+            <div class="info-item">
+              <span class="info-item-label">Payment Method</span>
+              <span class="info-item-val" id="success-payment-method">Cash on Delivery (COD)</span>
+            </div>
+            <div class="info-item">
+              <span class="info-item-label">Total Amount Payable</span>
+              <span class="info-item-val" style="color: var(--color-primary); font-size: 1.15rem;" id="success-total">৳1,410</span>
+            </div>
+            <div class="info-item" style="grid-column: 1 / -1;">
+              <span class="info-item-label">Estimated Delivery</span>
+              <span class="info-item-val" id="success-estimated">Within 24-48 Hours (Pathao Express)</span>
+            </div>
+          </div>
+
+          <!-- Direct Call to Actions -->
+          <div class="success-actions-row">
+            <button type="button" class="btn btn-primary btn-lg" id="success-track-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              Track Your Order Live
+            </button>
+            <button type="button" class="btn btn-outline" onclick="openInvoiceModal()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Print / Save Invoice
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="switchView('checkout')">
+              🛍️ Place Another Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 3: INTERACTIVE REAL-TIME ORDER TRACKING SYSTEM
+         ==================================================================== -->
+    <section id="view-tracking" class="view-section">
+      
+      <!-- Tracking Hero & Search Section -->
+      <div class="tracking-hero">
+        <div class="tracking-hero-content">
+          <div class="tracking-hero-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            Real-Time Logistics Tracker
+          </div>
+          <h1 class="tracking-hero-title">Track Your Anonna Mart Package</h1>
+          <p class="tracking-hero-sub">Enter your Order ID (e.g., #AM-98451) or 11-digit mobile number to see live status, courier assignment, and rider location.</p>
+
+          <!-- Search Form -->
+          <form id="tracking-search-form" class="tracking-search-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text-subtle)" stroke-width="2" style="margin-left: 8px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="tracking-search-input" class="search-input-field" placeholder="Search by Order ID (e.g., AM-98451) or Phone (01712...)" value="AM-98451" required>
+            <button type="submit" class="btn btn-primary tracking-search-btn">
+              Track Package
+            </button>
+          </form>
+
+          <!-- Quick Test Sample Chips -->
+          <div class="sample-orders-row">
+            <span>Try sample orders:</span>
+            <span class="sample-order-chip" data-order-id="AM-98451">#AM-98451 (Rider Assigned)</span>
+            <span class="sample-order-chip" data-order-id="AM-84102">#AM-84102 (In Transit)</span>
+            <span class="sample-order-chip" data-order-id="AM-76290">#AM-76290 (Processing)</span>
+            <span class="sample-order-chip" data-order-id="AM-43109">#AM-43109 (Delivered)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tracking Result Dashboard Card -->
+      <div id="tracking-result-dashboard" class="tracking-dashboard-card">
+
+        <!-- Top Header Bar -->
+        <div class="tracking-header-bar">
+          <div class="order-headline-meta">
+            <div class="tracking-order-num" id="track-order-id-display">
+              #AM-98451
+              <span class="badge badge-gold">Out for Delivery</span>
+            </div>
+            <div class="tracking-order-date" id="track-order-date">Placed on Oct 9, 2026 • 08:30 AM</div>
+            <div style="font-size: 0.8rem; color: var(--color-primary); font-weight: 600; margin-top: 2px;" id="track-courier-partner">
+              Pathao Express • Tracking #PATHAO-DH-98451-BD
+            </div>
+          </div>
+          <div class="tracking-header-actions">
+            <button type="button" class="btn btn-outline btn-sm" onclick="openInvoiceModal()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              View Invoice
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Status Simulator Toolbar (Allows testing how UI behaves in all 5 states) -->
+        <div class="status-simulator-bar">
+          <div class="simulator-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            Interactive Status Simulator (Test UI States):
+          </div>
+          <div class="simulator-btns-group">
+            <button type="button" class="sim-stage-btn" data-stage="placed">1. Placed</button>
+            <button type="button" class="sim-stage-btn" data-stage="processing">2. Processing</button>
+            <button type="button" class="sim-stage-btn" data-stage="shipped">3. In Transit</button>
+            <button type="button" class="sim-stage-btn active" data-stage="out_for_delivery">4. Out for Delivery</button>
+            <button type="button" class="sim-stage-btn" data-stage="delivered">5. Delivered</button>
+          </div>
+        </div>
+
+        <!-- Visual Multi-Stage Stepper Bar -->
+        <div class="stepper-container">
+          <div class="stepper-progress-track">
+            <div class="stepper-progress-fill" id="stepper-fill-bar" style="width: 80%;"></div>
+          </div>
+          <div class="stepper-steps-row" id="stepper-steps-container">
+            <!-- Dynamically populated by tracking.js -->
+          </div>
+        </div>
+
+        <!-- Tracking Details Two-Column Layout -->
+        <div class="tracking-grid">
+          
+          <!-- Left Main Area: ETA, Rider Card, Route Map, Audit Logs -->
+          <div class="tracking-main-left">
+            
+            <!-- ETA Highlight Card -->
+            <div class="eta-highlight-card">
+              <div class="eta-left">
+                <div class="eta-icon-wrap">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div>
+                  <div class="eta-label">Estimated Delivery</div>
+                  <div class="eta-date-val" id="eta-date-display">Today, Oct 9 by 05:30 PM</div>
+                  <div class="eta-status-note" id="eta-status-note-display">Your package is with delivery rider Md. Tanvir Hossain. Arriving shortly.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Courier Rider Card (When Out for Delivery or Delivered) -->
+            <div id="tracking-rider-card-wrapper">
+              <!-- Dynamically rendered -->
+            </div>
+
+            <!-- Live Simulated Map & Route Canvas -->
+            <div id="simulated-map-container">
+              <!-- Dynamically rendered -->
+            </div>
+
+            <!-- Activity Audit Trail -->
+            <div class="activity-log-card">
+              <div class="activity-log-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -3px; color: var(--color-primary); margin-right: 6px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                Package Activity & Scan History
+              </div>
+              <div class="log-timeline" id="tracking-logs-container">
+                <!-- Dynamically populated by tracking.js -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Sidebar: Delivery Address, Order Items, Support -->
+          <div class="tracking-side-column">
+            
+            <!-- Destination Address Card -->
+            <div class="side-info-card">
+              <div class="side-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Delivery Address
+              </div>
+              <div class="tracking-dest-address" id="track-dest-address">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Order Items & Invoice Breakdown -->
+            <div class="side-info-card">
+              <div class="side-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                Items In This Shipment
+              </div>
+              <div id="track-items-summary">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Need Help / Support Widget -->
+            <div class="support-widget-card">
+              <div class="support-title">Need Help with this Order?</div>
+              <div class="support-sub">Our customer care team is available 24/7 to help you with delays, rescheduling, or instructions.</div>
+              <div class="support-action-buttons">
+                <a href="https://wa.me/8801712345678" target="_blank" class="support-btn-whatsapp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                  Chat on WhatsApp
+                </a>
+                <a href="tel:+8809610123456" class="support-btn-call">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  Call +880 9610 123456
+                </a>
+                <button type="button" class="report-issue-btn" onclick="openIssueReportModal()">
+                  Report an Issue / Reschedule Delivery
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Not Found Search Notice -->
+      <div id="tracking-not-found" class="tracking-dashboard-card" style="display: none; text-align: center; padding: 48px;">
+        <div style="font-size: 3rem; margin-bottom: 12px;">🔍</div>
+        <h2 style="font-size: 1.5rem; color: var(--text-main); margin-bottom: 8px;">No Order Found</h2>
+        <p style="color: var(--text-muted); max-width: 460px; margin: 0 auto 20px;">
+          We couldn't locate any order matching "<strong id="not-found-query"></strong>". Please check your Order ID or phone number.
+        </p>
+        <button class="btn btn-primary" onclick="searchAndDisplayOrder('AM-98451')">
+          View Demo Order #AM-98451
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       MODALS: OTP, BKASH, ISSUE REPORT, INVOICE
+       ==================================================================== -->
+
+  <!-- Modal 1: SMS OTP Verification Modal -->
+  <div class="modal-overlay" id="modal-otp">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title">Verify Phone Number</h2>
+        <p class="modal-sub">We sent a 4-digit verification code via SMS to <strong id="otp-modal-phone">+880 01712-345678</strong></p>
+      </div>
+      <div class="modal-body">
+        <div class="otp-inputs-row">
+          <input type="text" class="otp-digit-input" maxlength="1" value="1" autofocus>
+          <input type="text" class="otp-digit-input" maxlength="1" value="2">
+          <input type="text" class="otp-digit-input" maxlength="1" value="3">
+          <input type="text" class="otp-digit-input" maxlength="1" value="4">
+        </div>
+        <div class="otp-resend-bar">
+          Resend code in <span class="otp-timer-count" id="otp-countdown-sec">30s</span>
+        </div>
+        <div class="otp-hint-badge">
+          💡 Demo Hint: Sample code is <strong>1234</strong>. Click verify to complete.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="handleVerifyOtp()">Verify Code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: bKash Payment Simulation Modal -->
+  <div class="modal-overlay" id="modal-bkash">
+    <div class="modal-card" style="border-top: 6px solid #E2136E;">
+      <button class="modal-close-btn" aria-label="Close">&times;</button>
+      <div class="bkash-modal-header">
+        <div class="bkash-logo-title">bKash Payment Gateway</div>
+        <div style="font-size: 0.85rem; opacity: 0.9; margin-top: 4px;">Merchant: Anonna Mart Ltd (01711-223344)</div>
+        <div class="bkash-amount-due" id="bkash-sim-amount">৳1,410</div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" style="font-size: 0.825rem;">Your bKash Account Number</label>
+          <input type="text" id="bkash-wallet-input" class="form-input" placeholder="01XXXXXXXXX" value="01712345678">
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.825rem;">bKash PIN (Demo Mode)</label>
+          <input type="password" id="bkash-pin-input" class="form-input" placeholder="Enter PIN" value="12345">
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-subtle); margin-top: 10px; text-align: center;">
+          🔒 Secured by bKash 256-bit Tokenized PGW API
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-cancel-btn">Close</button>
+        <button type="button" class="btn btn-primary" id="bkash-confirm-btn" onclick="handleBkashConfirm()" style="background: #E2136E; border-color: #E2136E;">Confirm Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Report an Issue Modal -->
+  <div class="modal-overlay" id="modal-issue-report">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title">Order Support & Issue Resolution</h2>
+        <p class="modal-sub">Tell us how we can assist you with your Anonna Mart order.</p>
+      </div>
+      <form onsubmit="handleIssueSubmit(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="issue-category-select">Issue Category</label>
+            <select id="issue-category-select" class="form-select">
+              <option value="Change Address">Change Delivery Address / Contact</option>
+              <option value="Reschedule">Reschedule Delivery Date or Time</option>
+              <option value="Delay">Package Delayed Past Estimated Time</option>
+              <option value="Rider Call">Rider Unreachable / Not Answering</option>
+              <option value="Cancel">Request Order Cancellation</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="issue-desc-input">Additional Notes</label>
+            <textarea id="issue-desc-input" class="form-textarea" rows="3" placeholder="Please describe your request in detail..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit Ticket</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Tax Invoice Preview Modal -->
+  <div class="modal-overlay" id="modal-invoice">
+    <div class="modal-card modal-invoice-card">
+      <button class="modal-close-btn" aria-label="Close">&times;</button>
+      <div id="invoice-printable-body">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+      <div class="modal-footer" style="justify-content: space-between;">
+        <span style="font-size: 0.8rem; color: var(--text-subtle);">Mushak 6.3 Registered Document</span>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Close</button>
+          <button type="button" class="btn btn-primary" onclick="printCurrentInvoice()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Print / PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Global Footer -->
+  <footer class="main-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div class="footer-perks">
+          <div class="footer-perk-item">
+            <div class="perk-icon-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div>
+              <div class="perk-title">100% Authentic Products</div>
+              <div class="perk-desc">Sourced directly from organic certified farms</div>
+            </div>
+          </div>
+
+          <div class="footer-perk-item">
+            <div class="perk-icon-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            </div>
+            <div>
+              <div class="perk-title">Cash on Delivery Available</div>
+              <div class="perk-desc">Doorstep parcel delivery across all 64 districts</div>
+            </div>
+          </div>
+
+          <div class="footer-perk-item">
+            <div class="perk-icon-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+            </div>
+            <div>
+              <div class="perk-title">7 Days Easy Return</div>
+              <div class="perk-desc">Hassle-free replacement and money back care</div>
+            </div>
+          </div>
+
+          <div class="footer-perk-item">
+            <div class="perk-icon-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div>
+              <div class="perk-title">24/7 Helpline Support</div>
+              <div class="perk-desc">+880 9610 123456 • support@anonnamart.com.bd</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 <strong>Anonna Mart</strong> ("Your Choice, Our Care"). All Rights Reserved. Dhaka, Bangladesh.
+        </div>
+        <div class="footer-payment-icons">
+          <span style="margin-right: 6px;">Accepted Payments:</span>
+          <span class="pay-badge">💵 Cash on Delivery</span>
+          <span class="pay-badge" style="color: #E2136E; font-weight: 800;">bKash</span>
+          <span class="pay-badge" style="color: #F7941D; font-weight: 800;">Nagad</span>
+          <span class="pay-badge" style="color: #8C3494; font-weight: 800;">Rocket</span>
+          <span class="pay-badge">VISA</span>
+          <span class="pay-badge">Mastercard</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/tracking.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
